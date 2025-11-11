@@ -1,0 +1,217 @@
+% Author: femendoz - fmendoza@duck.com
+% This document shows how to create new environments with tColorBox package.
+% The environments are: Definition, Theorem, Lemma, Corollary, Proposition, Example and Proof.
+% Each environment has a different color and an icon at the top right corner of the box.
+% The environments are breakable, so they can be split between pages.
+% Feel free to modify the colors, the icons, and the styles of the boxes, since this is just a template.
+
+\documentclass[a4paper,11pt, titlepage]{article} 
+
+\usepackage[utf8]{inputenc}
+
+\usepackage{amsthm}
+\usepackage{lipsum}
+
+\usepackage[theorems, skins, breakable]{tcolorbox}
+\usepackage{fontawesome5} % For the icons
+\usepackage{xcolor}
+\usepackage{hyperref}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%% NEW COLORS %%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Default colors can be used instead.
+
+\definecolor[named]{Coral}{rgb}{1, .50, .31}
+\definecolor[named]{MediumSpringGreen}{rgb}{0, .98, .6}
+\definecolor[named]{NavyBlue}{rgb}{0, 0, .5}
+\definecolor[named]{DarkOlive}{rgb}{.5, .5, 0}
+\definecolor[named]{DeepPink}{rgb}{1, .08, .58}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%% NEW FUNCTIONS %%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% First, we define the  color boxes styles.
+
+\tcbset{
+    defstyle/.style = {
+        enhanced jigsaw, 														% Box skin.
+		titlerule = 0mm, 														% Line that separates the title from the content.
+		toptitle = 2mm, 														% Space between the title and the top of the box.
+        arc = 0mm, 																% Curvature of the corners.
+		after title = {\hfill\textcolor{violet!75}{\small\faIcon{book-open}}},	% Icon at the top right corner of the box.
+        fonttitle = \bfseries\upshape, 											% Title font.
+        colbacktitle = violet!7.5!white, 										% Background color of the title (Represents 7.5% of violet and the rest of white).
+        coltitle = black, 														% Title font color.
+        colback = violet!7.5!white, 											% Background color of the box.
+        colframe = violet!30!white, 											% Frame color.
+        before skip = 12pt, 													% Space before the box.
+        after skip = 12pt 														% Space after the box.
+    },
+	theostyle/.style = {
+        enhanced jigsaw, 
+		titlerule = 0mm,
+		toptitle = 2mm,
+		after title = {\hfill\textcolor{Coral!75}{\small\faIcon{highlighter}}},
+        arc = 0mm, 
+        fonttitle = \bfseries\upshape,
+		coltitle = black,
+        colbacktitle = Coral!15!white,
+        colback = Coral!15!white,
+        colframe = Coral!45!white, 
+        before skip = 12pt, 
+        after skip = 12pt
+    },
+    exastyle/.style = {
+        enhanced jigsaw, 
+		titlerule = 0mm,
+		toptitle = 2mm,
+		after title = {\hfill\textcolor{MediumSpringGreen!75}{\small\faIcon{search}}},
+        arc = 0mm, 
+        fonttitle = \bfseries\upshape,
+		coltitle = black,
+        colbacktitle = MediumSpringGreen!7.5!white,
+        colback = MediumSpringGreen!7.5!white,
+        colframe = MediumSpringGreen!30!white, 
+        before skip = 12pt, 
+        after skip = 12pt
+    },
+	lemstyle/.style = {
+        enhanced jigsaw, 
+		titlerule = 0mm,
+		toptitle = 2mm,
+		after title = {\hfill\textcolor{NavyBlue!75}{\small\faIcon{clipboard-list}}},
+        arc = 0mm, 
+        fonttitle = \bfseries\upshape,
+		coltitle = black,
+        colbacktitle = NavyBlue!7.5!white,
+        colback = NavyBlue!7.5!white,
+        colframe = NavyBlue!30!white, 
+        before skip = 12pt, 
+        after skip = 12pt
+    },
+	corstyle/.style = {
+        enhanced jigsaw, 
+		titlerule = 0mm,
+		toptitle = 2mm,
+		after title = {\hfill\textcolor{DarkOlive!75}{\small\faIcon{file-alt}}},
+        arc = 0mm, 
+        fonttitle = \bfseries\upshape,
+		coltitle = black,
+        colbacktitle = DarkOlive!7.5!white,
+        colback = DarkOlive!7.5!white,
+        colframe = DarkOlive!30!white, 
+        before skip = 12pt, 
+        after skip = 12pt
+    },
+	propstyle/.style = {
+        enhanced jigsaw, 
+		titlerule = 0mm,
+		toptitle = 2mm,
+		after title = {\hfill\textcolor{DeepPink!75}{\small\faIcon{scroll}}},
+        arc = 0mm, 
+        fonttitle = \bfseries\upshape,
+		coltitle = black,
+        colbacktitle = DeepPink!7.5!white,
+        colback = DeepPink!7.5!white,
+        colframe = DeepPink!30!white, 
+        before skip = 12pt, 
+        after skip = 12pt
+    }
+}
+
+% Now, we define the new functions and associate them with the styles.
+
+\NewTcbTheorem[number within = section]%
+{Definition}{Definition}{defstyle, breakable}{def}
+% The first argument is the name of the environment.
+% The second argument is the title of the environment.
+% The third argument is the style of the environment, and if it is breakable or not (remove the breakable option if you don't want it).
+% The fourth argument is the label prefix of the environment (i.e. a label of a Definition will be def:label).
+% If you don't want to use a counter, either change the option 'number within = section' to 'no counter'.
+% or use Definiton* instead of Definition. Take into account that the label will not work in this case.
+% The same applies to the other environments.
+
+\NewTcbTheorem[number within = section]%
+{Theorem}{Theorem}{theostyle, breakable}{theo}
+
+\NewTcbTheorem[use counter from = Theorem]%
+{Lemma}{Lemma}{lemstyle, breakable}{lem}
+
+
+\NewTcbTheorem[use counter from = Theorem]%
+{Corollary}{Corollary}{corstyle, breakable}{cor}
+
+\NewTcbTheorem[use counter from = Theorem]%
+{Proposition}{Proposition}{propstyle, breakable}{prop}
+
+\NewTcbTheorem[auto counter]%
+{Example}{Example}{exastyle, breakable}{exa}
+
+\newenvironment{Proof}[1][\proofname]{%
+\begin{proof}[#1]$ $\par\nobreak\ignorespaces
+    }{%
+\end{proof}
+}
+
+\tcolorboxenvironment{Proof}{% `proof' from `amsthm'
+	blanker,
+	breakable,
+	left = 5mm,
+	before skip = 10pt,
+	after skip = 10pt,
+	borderline west = {1mm}{0pt}{black}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{\bf{tColorBox Examples}}
+\author{F. Mendoza}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Examples}
+
+\begin{Definition}{First definition}{def1}  % The first argument is the title of the environment, the second argument is the label of the environment.
+                                            % Both arguments can be empty, but they are mandatory.
+	\lipsum[1]
+\end{Definition}
+
+
+\begin{Theorem}{Lorem Ipsum}{Lorem}
+	\lipsum[2]
+\end{Theorem}
+
+\begin{Proof}
+	\lipsum[3]
+\end{Proof}
+
+\begin{Corollary*}{}{}  % Leave the first argument empty if you don't want a title.
+                        % There is no label in this case, since the environment is starred. Having the label empty is allowed.
+	\lipsum[4]
+\end{Corollary*}
+
+\begin{Proposition*}{Unnumbered proposition} % You can also remove the label argument.
+	\lipsum[5]
+\end{Proposition*}
+
+\begin{Lemma}{Broken lemma}{break}
+	\lipsum[6-7]
+\end{Lemma}
+
+\begin{Example}{}{}
+	\lipsum[8]
+\end{Example}
+
+Even if we are not using default environments, we can still make references to them. 
+For example, we can refer to the Definition \ref{def:def1} or to the Theorem \ref{theo:Lorem}. 
+
+For more information about the tColorBox package, visit the following link: \href{https://ctan.org/pkg/tcolorbox}{tColorBox}.
+\end{document}
