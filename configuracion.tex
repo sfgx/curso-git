@@ -1,0 +1,16 @@
+\usepackage[most]{tcolorbox}
+\tcbuselibrary{theorems}
+\newtcbtheorem[number within = section]{task}{Tarea}{
+    theorem style=plain,
+    arc=3mm,
+    boxrule=.5mm,
+    colframe=blue!50!black,
+    colback=white,
+    fonttitle=\sffamily\bfseries,
+    coltitle=blue!50!black,
+    before lower={\textcolor{blue!50!black}{\textsf{\textbf{Observaciones:}}}\ },
+}{}
+
+\usepackage[a4paper, centering,
+            text={17cm,26cm},
+            showframe=false]{geometry}
