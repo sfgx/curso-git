@@ -153,7 +153,7 @@ fonttitle=\bfseries,
 title={#2},#1}
 
 \newtcblisting{cmdshell}{colback=black!10,colupper=black, boxrule=0mm,
-listing only,listing options={style=tcblatex,language=bash},
+listing only,listing options={style=gitstyle,language=git},
 every listing line={{\small\ttfamily \$ }}}
 
 
