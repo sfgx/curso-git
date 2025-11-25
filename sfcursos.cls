@@ -124,7 +124,7 @@
     colback=white,
     fonttitle=\sffamily\bfseries,
     coltitle=gblue,
-    before lower={\textcolor{gblue}{\textsf{\textbf{Observaciones:}}}\ },
+    before lower={\textcolor{gblue}{\textsf{\textbf{Anotaciones:}}}\ },
 }{}
 
 %% Color Boxes
