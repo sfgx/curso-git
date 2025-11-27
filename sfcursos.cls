@@ -114,11 +114,13 @@
   {} % The label (section number) is handled inside the tcolorbox
   {0em} % Horizontal separation between label and title
   {
+    \vspace*{-1.5em}
     \begin{tcolorbox}[enhanced jigsaw, colframe=white, 
     interior style={left color=gblue, right color=glblue},
     coltext=white]
     {\Large\textbf\thesection. \textbf{#1}}
-\end{tcolorbox}
+    \end{tcolorbox}
+    \vspace{-2.5em}
   }
 
 \tcbuselibrary{theorems}
